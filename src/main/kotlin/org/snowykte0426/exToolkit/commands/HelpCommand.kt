@@ -26,6 +26,12 @@ object HelpCommand : BaseCommand {
                         context.source.sendFeedback(
                             { Text.literal("   /$commandName help - 도움말을 표시합니다.").formatted(Formatting.GOLD) }, false
                         )
+                        context.source.sendFeedback(
+                            {
+                                Text.literal("   /$commandName get - 장비를 최대 마법부여 상태로 지급하거나 아이템을 지급합니다.")
+                                    .formatted(Formatting.GOLD)
+                            }, false
+                        )
                         1
                     })
             )

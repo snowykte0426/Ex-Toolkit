@@ -79,6 +79,19 @@ object JsonUtils {
                     notes = listOf(
                         "거북 등딱지 추천 아이템 목록에서 제거"
                     )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.5",
+                    notes = listOf(
+                        "/extool reload 명령어 실행 시 패치노트 파일 갱신 기능 추가",
+                        "모드 실행 시 아스키 아트 출력 기능 추가"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.6",
+                    notes = listOf(
+                        "/extool help 추가 설명 등록"
+                    )
                 )
             )
         )

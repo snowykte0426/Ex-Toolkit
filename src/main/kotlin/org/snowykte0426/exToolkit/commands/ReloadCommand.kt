@@ -26,12 +26,19 @@ object ReloadCommand : BaseCommand {
 
     private fun reloadConfig(source: ServerCommandSource) {
         try {
-            JsonUtils.loadPatchNotes()
-            logger.info("[Ex-Toolkit] 설정이 성공적으로 리로드되었습니다.")
-            source.sendFeedback({ Text.literal("[Ex-Toolkit] 설정이 리로드되었습니다!").formatted(Formatting.GREEN) }, false)
+            JsonUtils.createDefaultPatchNote()
+            logger.warn("[Ex-Toolkit] Reload가 수행되었습니다")
+            source.sendFeedback({
+                Text.literal("[Ex-Toolkit] Ex-Toolkit 설정을 다시 불러왔습니다.")
+                    .formatted(Formatting.GREEN)
+            }, false)
+
         } catch (e: Exception) {
-            logger.error("[Ex-Toolkit] 설정 리로드 중 오류 발생: ${e.message}")
-            source.sendFeedback({ Text.literal("[Ex-Toolkit] 설정 리로드 중 오류가 발생했습니다.").formatted(Formatting.RED) }, false)
+            logger.error("[Ex-Toolkit] Reload 중 오류가 발생했습니다", e)
+            source.sendFeedback({
+                Text.literal("[Ex-Toolkit] Ex-Toolkit 설정을 다시 불러오는 중 오류가 발생했습니다.")
+                    .formatted(Formatting.RED)
+            }, false)
         }
     }
 }

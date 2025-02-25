@@ -41,6 +41,44 @@ object JsonUtils {
                         "패치노트 페이지 넘기기 기능 추가",
                         "기타 버그 수정 및 안정성 향상"
                     )
+                ),
+                PatchNoteEntry(
+                    version = "1.1.1",
+                    notes = listOf(
+                        "/extool reload 명령 실행 시 실제로 리로드 되지 않던 버그 수정"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.0",
+                    notes = listOf(
+                        "/extool get 명령어 추가"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.1",
+                    notes = listOf(
+                        "아이템 지급 시 최대 레벨 인첸트 적용"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.2",
+                    notes = listOf(
+                        "서버 실행 시 모드 초기화 로깅 추가",
+                        "/extool get 명령어 아이템 추천 기능 추가"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.3",
+                    notes = listOf(
+                        "추천 아이템 코드 오류 수정",
+                        "삼지창 마법부여 충돌 수정"
+                    )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.4",
+                    notes = listOf(
+                        "거북 등딱지 추천 아이템 목록에서 제거"
+                    )
                 )
             )
         )

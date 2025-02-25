@@ -1,15 +1,22 @@
 package org.snowykte0426.exToolkit
 
+import GetItemCommand
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import org.apache.logging.log4j.LogManager.getLogger
 import org.snowykte0426.exToolkit.commands.*
 
 class ExToolkit : ModInitializer {
+    private val logger = getLogger("Ex-Toolkit")
+
     override fun onInitialize() {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
-            listOf(ReloadCommand, HelpCommand, GreetCommand, PatchNoteCommand).forEach {
+            logger.info("[Ex-Toolkit] Registering commands...")
+            listOf(ReloadCommand, HelpCommand, GreetCommand, PatchNoteCommand, GetItemCommand).forEach {
                 it.register(dispatcher)
             }
+            Thread.sleep(1000)
+            logger.info("[Ex-Toolkit] Commands registered!")
         }
     }
 }

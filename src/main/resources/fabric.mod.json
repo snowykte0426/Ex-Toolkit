@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "Ex-Toolkit",
   "description": "",
-  "authors": [],
+  "authors": ["snowykte0426"],
   "contact": {},
   "license": "BSD-3-Clause",
   "icon": "assets/ex-toolkit/icon.png",

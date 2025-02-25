@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.1.10"
-    id("fabric-loom") version "1.7.1"
+    id("fabric-loom") version "1.9.2"
     id("maven-publish")
 }
 
@@ -50,6 +50,10 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+
+    implementation("org.apache.logging.log4j:log4j-api:2.17.1")
+    implementation("org.apache.logging.log4j:log4j-core:2.17.1")
+    implementation("org.slf4j:slf4j-api:1.7.32")
 }
 
 tasks.processResources {

@@ -106,6 +106,12 @@ object JsonUtils {
                         "일부 아이템 마법부여 추가"
                     )
                 ),
+                PatchNoteEntry(
+                    version = "1.3.0",
+                    notes = listOf(
+                        "/extool get-super 명령어 추가"
+                    )
+                )
             )
         )
 

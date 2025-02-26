@@ -32,6 +32,12 @@ object HelpCommand : BaseCommand {
                                     .formatted(Formatting.GOLD)
                             }, false
                         )
+                        context.source.sendFeedback(
+                            {
+                                Text.literal("   /$commandName get-super - 아이템을 최대 마법부여 상태로 지급합니다.")
+                                    .formatted(Formatting.GOLD)
+                            }, false
+                        )
                         1
                     })
             )

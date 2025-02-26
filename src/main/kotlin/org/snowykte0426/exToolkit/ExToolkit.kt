@@ -14,10 +14,9 @@ class ExToolkit : ModInitializer {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
             logger.info("[Ex-Toolkit] Registering commands...")
             logger.info(StartArt.art)
-            listOf(ReloadCommand, HelpCommand, GreetCommand, PatchNoteCommand, GetItemCommand,GetSuperCommand).forEach {
+            listOf(ReloadCommand, HelpCommand, GreetCommand, PatchNoteCommand, GetItemCommand,GetSuperCommand,HealCommand,RepairCommand).forEach {
                 it.register(dispatcher)
             }
-            Thread.sleep(1000)
             logger.info("[Ex-Toolkit] Commands registered!")
         }
     }

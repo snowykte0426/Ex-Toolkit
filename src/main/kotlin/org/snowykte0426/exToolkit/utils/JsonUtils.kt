@@ -111,7 +111,14 @@ object JsonUtils {
                     notes = listOf(
                         "/extool get-super 명령어 추가"
                     )
-                )
+                ),
+                PatchNoteEntry(
+                    version = "1.4.0",
+                    notes = listOf(
+                        "/extool heal 명령어 추가",
+                        "/extool repair 명령어 추가"
+                    )
+                ),
             )
         )
 

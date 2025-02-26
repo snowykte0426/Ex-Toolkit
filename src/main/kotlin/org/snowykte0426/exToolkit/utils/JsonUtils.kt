@@ -119,6 +119,12 @@ object JsonUtils {
                         "/extool repair 명령어 추가"
                     )
                 ),
+                PatchNoteEntry(
+                    version = "1.4.1",
+                    notes = listOf(
+                        "시작 아스키 아트에 색상 적용"
+                    )
+                ),
             )
         )
 

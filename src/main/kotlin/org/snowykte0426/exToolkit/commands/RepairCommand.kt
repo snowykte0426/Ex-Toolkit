@@ -41,7 +41,7 @@ object RepairCommand : BaseCommand {
         val itemStack: ItemStack = player.mainHandStack
         return if (!itemStack.isEmpty && itemStack.isDamageable) {
             itemStack.damage = 0
-            logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 아이템 ${itemStack.item}을 수리했습니다.")
+            logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 아이템 ${itemStack.item.name}을 수리했습니다.")
             true
         } else {
             false

@@ -12,12 +12,22 @@ class ExToolkit : ModInitializer {
 
     override fun onInitialize() {
         CommandRegistrationCallback.EVENT.register { dispatcher, _, _ ->
-            logger.info("[Ex-Toolkit] Registering commands...")
-            logger.info(StartArt.art)
-            listOf(ReloadCommand, HelpCommand, GreetCommand, PatchNoteCommand, GetItemCommand,GetSuperCommand,HealCommand,RepairCommand).forEach {
+            logger.info("\u001B[31m" + "[Ex-Toolkit] Registering commands...")
+            logger.info("\u001B[36m" + "[Ex-Toolkit] Version: 1.4.1")
+            logger.info("\u001B[32m" + StartArt.art)
+            listOf(
+                ReloadCommand,
+                HelpCommand,
+                GreetCommand,
+                PatchNoteCommand,
+                GetItemCommand,
+                GetSuperCommand,
+                HealCommand,
+                RepairCommand
+            ).forEach {
                 it.register(dispatcher)
             }
-            logger.info("[Ex-Toolkit] Commands registered!")
+            logger.info("\u001B[36m" + "[Ex-Toolkit] Commands registered!")
         }
     }
 }

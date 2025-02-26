@@ -38,6 +38,14 @@ object HelpCommand : BaseCommand {
                                     .formatted(Formatting.GOLD)
                             }, false
                         )
+                        context.source.sendFeedback(
+                            { Text.literal("   /$commandName heal - 체력과 허기를 회복합니다.").formatted(Formatting.GOLD) }, false
+                        )
+                        context.source.sendFeedback(
+                            {
+                                Text.literal("   /$commandName repair - 손에 들고있는 아이템을 수리합니다.").formatted(Formatting.GOLD)
+                            }, false
+                        )
                         1
                     })
             )

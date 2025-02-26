@@ -92,7 +92,14 @@ object JsonUtils {
                     notes = listOf(
                         "/extool help 추가 설명 등록"
                     )
-                )
+                ),
+                PatchNoteEntry(
+                    version = "1.2.7",
+                    notes = listOf(
+                        "/extool get에서 철퇴 및 갑옷 류 누락 문제 수정",
+                        "추천 아이템 목록 업데이트"
+                    )
+                ),
             )
         )
 

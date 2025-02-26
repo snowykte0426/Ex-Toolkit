@@ -21,6 +21,16 @@ object GetItemCommand : BaseCommand {
         "diamond_sword", "netherite_sword",
         "diamond_axe", "netherite_axe",
         "bow", "crossbow",
+        "mace",
+        "iron_helmet", "iron_chestplate", "iron_leggings", "iron_boots",
+        "iron_pickaxe", "iron_shovel", "iron_hoe", "iron_sword",
+        "iron_axe",
+        "golden_helmet", "golden_chestplate", "golden_leggings", "golden_boots",
+        "golden_pickaxe", "golden_shovel", "golden_hoe", "golden_sword", "golden_axe",
+        "stone_sword", "stone_axe", "stone_pickaxe", "stone_shovel", "stone_hoe",
+        "chainmail_helmet", "chainmail_chestplate", "chainmail_leggings", "chainmail_boots",
+        "wooden_sword", "wooden_axe", "wooden_pickaxe", "wooden_shovel", "wooden_hoe",
+        "leather_helmet", "leather_chestplate", "leather_leggings", "leather_boots",
         "trident",
         "diamond_helmet", "netherite_helmet",
         "diamond_chestplate", "netherite_chestplate",
@@ -123,6 +133,13 @@ object GetItemCommand : BaseCommand {
                 Enchantments.CHANNELING to 1
             )
 
+            is MaceItem ->
+                commonEnchantments + mapOf(
+                    Enchantments.DENSITY to 5,
+                    Enchantments.BREACH to 4,
+                    Enchantments.WIND_BURST to 3
+                )
+
             is ArmorItem -> {
                 val slot = when {
                     item.name.string.contains("helmet", true) || item.name.string.contains(
@@ -144,21 +161,29 @@ object GetItemCommand : BaseCommand {
                     else -> null
                 }
 
+                val protectionEnchantment = Enchantments.PROTECTION to 4
                 slot?.let {
                     commonEnchantments + when (it) {
                         "helmet" -> mapOf(
+                            protectionEnchantment,
                             Enchantments.RESPIRATION to 3,
                             Enchantments.AQUA_AFFINITY to 1
                         )
 
                         "leggings" -> mapOf(
+                            protectionEnchantment,
                             Enchantments.SWIFT_SNEAK to 3
                         )
 
                         "boots" -> mapOf(
+                            protectionEnchantment,
                             Enchantments.FEATHER_FALLING to 4,
                             Enchantments.DEPTH_STRIDER to 3,
                             Enchantments.SOUL_SPEED to 3
+                        )
+
+                        "chestplate" -> mapOf(
+                            protectionEnchantment
                         )
 
                         else -> emptyMap()

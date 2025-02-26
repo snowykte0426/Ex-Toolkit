@@ -100,6 +100,12 @@ object JsonUtils {
                         "추천 아이템 목록 업데이트"
                     )
                 ),
+                PatchNoteEntry(
+                    version = "1.2.8",
+                    notes = listOf(
+                        "일부 아이템 마법부여 추가"
+                    )
+                ),
             )
         )
 

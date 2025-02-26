@@ -4,6 +4,7 @@ import com.mojang.brigadier.suggestion.SuggestionProvider
 import net.minecraft.command.CommandSource.suggestMatching
 import net.minecraft.enchantment.Enchantments
 import net.minecraft.item.*
+import net.minecraft.registry.Registries
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.command.CommandManager
 import net.minecraft.server.command.ServerCommandSource
@@ -39,7 +40,10 @@ object GetItemCommand : BaseCommand {
         "diamond_pickaxe", "netherite_pickaxe",
         "diamond_shovel", "netherite_shovel",
         "diamond_hoe", "netherite_hoe",
-        "fishing_rod", "shears"
+        "fishing_rod", "shears",
+        "shield",
+        "flint_and_steel",
+        "carrot_on_a_stick", "warped_fungus_on_a_stick"
     )
 
     private val itemSuggestionProvider = SuggestionProvider<ServerCommandSource> { context, builder ->
@@ -82,7 +86,7 @@ object GetItemCommand : BaseCommand {
                                             },
                                             false
                                         )
-                                        logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 $itemName 아이템을 요청했습니다.")
+                                        logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 일반 아이템 ${itemName}을 요청했습니다.")
                                         1
                                     }
                             )
@@ -94,13 +98,14 @@ object GetItemCommand : BaseCommand {
 
     private fun applyMaxEnchantments(itemStack: ItemStack, server: MinecraftServer): ItemStack {
         val item = itemStack.item
+        val itemId = Registries.ITEM.getId(item).path
 
         val commonEnchantments = mapOf(
             Enchantments.UNBREAKING to 3,
             Enchantments.MENDING to 1
         )
 
-        val enchantments = when (item) {
+        var enchantments = when (item) {
             is SwordItem -> commonEnchantments + mapOf(
                 Enchantments.SHARPNESS to 5,
                 Enchantments.SMITE to 5,
@@ -205,7 +210,17 @@ object GetItemCommand : BaseCommand {
                 Enchantments.EFFICIENCY to 5
             )
 
+            is ShieldItem, is FlintAndSteelItem -> commonEnchantments
+
             else -> emptyMap()
+        }
+
+        if (enchantments.isEmpty() && (itemId.contains(
+                "carrot_on_a_stick",
+                true
+            ) || itemId.contains("warped_fungus_on_a_stick", true))
+        ) {
+            enchantments = commonEnchantments
         }
 
         enchantments.forEach { (enchantment, level) ->

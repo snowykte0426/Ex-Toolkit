@@ -125,6 +125,12 @@ object JsonUtils {
                         "시작 아스키 아트에 색상 적용"
                     )
                 ),
+                PatchNoteEntry(
+                    version = "1.4.2",
+                    notes = listOf(
+                        "/extool heal 명령어에서 부정적인 효과 제거 기능 추가"
+                    )
+                ),
             )
         )
 

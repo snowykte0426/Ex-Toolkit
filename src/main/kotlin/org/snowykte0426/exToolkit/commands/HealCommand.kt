@@ -3,6 +3,7 @@ package org.snowykte0426.exToolkit.commands
 import com.mojang.brigadier.CommandDispatcher
 import com.mojang.brigadier.arguments.StringArgumentType
 import com.mojang.brigadier.suggestion.SuggestionProvider
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.server.command.CommandManager
 import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.server.network.ServerPlayerEntity
@@ -61,7 +62,31 @@ object HealCommand : BaseCommand {
         player.health = player.maxHealth
         player.hungerManager.foodLevel = 20
         player.hungerManager.saturationLevel = 5.0f
-        logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 체력을 회복했습니다.")
+
+        val negativeEffects = setOf(
+            StatusEffects.POISON,
+            StatusEffects.WITHER,
+            StatusEffects.SLOWNESS,
+            StatusEffects.WEAKNESS,
+            StatusEffects.BLINDNESS,
+            StatusEffects.MINING_FATIGUE,
+            StatusEffects.NAUSEA,
+            StatusEffects.HUNGER,
+            StatusEffects.UNLUCK,
+            StatusEffects.BAD_OMEN,
+            StatusEffects.RAID_OMEN,
+            StatusEffects.TRIAL_OMEN,
+            StatusEffects.DARKNESS,
+            StatusEffects.WIND_CHARGED,
+            StatusEffects.WEAVING,
+            StatusEffects.OOZING,
+            StatusEffects.INFESTED
+        )
+
+        val effectsToRemove = player.statusEffects.filter { it.effectType in negativeEffects }
+        effectsToRemove.forEach { player.removeStatusEffect(it.effectType) }
+
+        logger.info("[Ex-Toolkit] 유저 ${player.name.string}이 체력을 회복하고 부정적인 상태 효과가 제거되었습니다.")
     }
 
     private fun playerNameSuggestion(): SuggestionProvider<ServerCommandSource> {
